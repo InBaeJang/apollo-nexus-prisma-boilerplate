@@ -1,0 +1,11 @@
+.vscode/
+dist/
+log/
+node_modules/
+*.env*
+src/generated/
+prisma/migrations
+
+package-lock.json
+ecosystem.config.js
+deploy.config.js
