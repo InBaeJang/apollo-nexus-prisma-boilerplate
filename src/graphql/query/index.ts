@@ -12,5 +12,11 @@ export const Query = queryType({
 
       }
     })
+    t.string("test", {
+      resolve: async (_, { }, ctx) => {
+        
+        return 'done'
+      }
+    })
   }
 })
