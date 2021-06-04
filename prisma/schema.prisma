@@ -8,22 +8,14 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  name      String
-  email     String
-  phone     String
-  posts     Post[]
-  outNum    Int?
-}
-
-model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
-  geo       Float[]
-  messyGeo  Float[]
-  userId    String
-  author    User     @relation(fields: [userId], references: [id])
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  email       String   @unique
+  password    String
+  phoneNumber String   @unique
+  name        String?
+  birth       Int?
+  gender      String?
+  status      String?
 }

@@ -19,13 +19,17 @@
   "dependencies": {
     "@prisma/client": "^2.22.1",
     "apollo-server": "^2.24.0",
+    "bcryptjs": "^2.4.3",
     "console-stamp": "^3.0.2",
     "graphql": "^15.5.0",
     "graphql-depth-limit": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
     "nexus": "^1.0.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/graphql-depth-limit": "^1.1.2",
+    "@types/jsonwebtoken": "^8.5.1",
     "@types/node": "^15.0.2",
     "@types/node-fetch": "^2.5.10",
     "prisma": "^2.22.1",
