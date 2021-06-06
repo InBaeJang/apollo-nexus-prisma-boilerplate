@@ -1,8 +1,9 @@
 import { PrismaClient } from '@prisma/client'
 
 const prisma = process.env.TS_NODE_DEV === 'true'
- ? new PrismaClient()
- : new PrismaClient({log: ['query']})
+  ? new PrismaClient({ log: ['query', 'info'] })
+  : new PrismaClient()
+
 
 export interface Context {
   prisma: PrismaClient
