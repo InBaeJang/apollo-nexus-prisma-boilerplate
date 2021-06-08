@@ -21,15 +21,3 @@ export const AuthUser = objectType({
     t.field('user', { type: 'User' });
   },
 });
-
-export const SomeEnum = enumType({
-  name: 'SomeEnum',
-  members: [
-    'A',
-    {
-      name: 'B',
-      deprecation: 'This is a deprecation reason for B',
-      value: 'B',
-    },
-  ],
-});

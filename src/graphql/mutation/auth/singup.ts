@@ -4,18 +4,7 @@ import jwt from 'jsonwebtoken';
 import { APP_SECRET } from '../../constants';
 import { createContext } from '../../../context'
 const { prisma } = createContext()
-
-async function findUserBy(email: string) {
-  return await prisma.user.findUnique({
-    where: { email: email },
-  })
-}
-
-async function findUserWith(phoneNumber: string) {
-  return await prisma.user.findUnique({
-    where: { phoneNumber: phoneNumber },
-  })
-}
+import { findUserBy, findUserWith } from './user'
 
 async function saveUser(signupArgs: any) {
   const pwd: string = await bcrypt.hash(signupArgs.password, 10);
@@ -48,17 +37,11 @@ export const Signup = extendType({
       resolve: async (_, signupArgs, ctx) => {
         console.log('signup START');
 
-        // let user = await ctx.prisma.user.findUnique({
-        //   where: { email: signupArgs.email },
-        // });
         let user = await findUserBy(signupArgs.email)
         if (user) {
           throw new Error('Already Signed up (email)');
         }
 
-        // user = await ctx.prisma.user.findUnique({
-        //   where: { phoneNumber: signupArgs.phoneNumber },
-        // });
         user = await findUserWith(signupArgs.phoneNumber)
         if (user) {
           throw new Error('Already Signed up (phoneNumber)');

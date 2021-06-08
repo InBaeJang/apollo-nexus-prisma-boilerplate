@@ -2,6 +2,7 @@ import { extendType, nonNull, stringArg } from 'nexus';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { APP_SECRET } from '../../constants';
+import { findUserBy } from './user';
 
 export const Login = extendType({
   type: 'Mutation',
@@ -15,9 +16,7 @@ export const Login = extendType({
       resolve: async (_, loginArgs, ctx) => {
         console.log('login START');
 
-        const user = await ctx.prisma.user.findUnique({
-          where: { email: loginArgs.email },
-        });
+        const user = await findUserBy(loginArgs.email)
 
         if (!user) {
           console.error('  No User');
