@@ -1,7 +1,6 @@
 import { extendType } from 'nexus';
 import jwt from 'jsonwebtoken';
 import { APP_SECRET } from '../constants';
-import { findUserBy } from '../mutation/auth/user';
 import { Context } from 'vm';
 
 function getUserId(context: Context) {
